@@ -1,0 +1,70 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito";
+}
+body{
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://images.unsplash.com/photo-1579547621706-1a9c79d5c9f1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');    
+
+}
+.login-card{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    box-shadow: 0px 6px 6px -1px #0000001A;
+    width:270px;
+    border-radius:10px ;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.login-header{
+    display: flex;
+    justify-content: center;
+}
+.login-header p{
+    font-weight: 800;
+    font-size: 17px;
+}
+.input-box{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.username{
+    display: flex;
+    gap: 6px;
+}
+.password{
+    display: flex;
+    gap: 8px;
+}
+.username input ,
+.password input{
+    border-radius: 10px;
+}
+.sign-up{
+    font-weight: 600;
+}
+.signin-button button{
+    padding: 5px;
+    width: 100%;
+    background-color: rgb(76, 76, 244);
+    color: #ffffff;
+    border-radius: 10px;
+}
+.sign-up a{
+    text-decoration: none;
+    color: inherit;
+}
+.sign-up a:hover{
+    color: blue;
+}
+.signin-button button:hover{
+    background-color: blue;
+}

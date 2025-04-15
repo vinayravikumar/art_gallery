@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery</title>
+    <link rel="stylesheet" href="CSS/home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script>
+        function openPainting(number) {
+          window.location.href = `painting${number}.html`;
+        }
+      </script>
+    
+      
+    <div class="navbar">
+        <div class="logo">
+            <i class="bi bi-image" style="font-size: 1.2rem;"></i>
+            <h3>Art Shop</h3>
+        </div>
+        <div class="logout-button">
+            <button>Logout</button>
+        </div>
+    </div>
+    <div class="card-section">
+        <div class="card" onclick="openPainting(1)">
+            <img src="https://www.1st-art-gallery.com/media/catalog/product/cache/1449aa2372d6277e726923d1d1b7f0ce/b/a/base_4578922.webp" alt="image1" width="310px">
+            <div class="img-details">
+                <p>The Starry Night
+                    Saint Rémy (1889)</p>
+            </div>
+            
+            <div class="artist-details">
+                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT-sKqhFCWv1OTtomWp0iUknlzam8z5iJn2XTlltx1cHzTlQRQrfNk7So4DDCunLjv0ePwIMdNns_EgGjVH_4QkwA" alt="artist1">
+                <p>vincent van gogh</p>
+            </div>
+            <div class="visit-site">
+                <a href="https://artistro.com/blogs/news/30-most-famous-artworks-in-history-the-greatest-art-of-all-time?srsltid=AfmBOooEuURmnWgmoGpkGZOpY1QuSjbXKOgKvBh-yHHgqltFms8vGkic" onclick="event.stopPropagation()" target="_blank">
+                  <button>Visit Site</button>
+                </a>
+            </div>
+              
+        </div>
+        <div class="card" onclick="openPainting(2)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/960px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="image1" >
+            <div class="img-details">
+                <p>The Birth of Venus (1486)</p>
+            </div>
+                
+            <div class="artist-details">
+                <img src="data:image/webp;base64,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" alt="artist1">
+                <p>Sandro Botticelli</p>
+            </div>
+            <div class="visit-site">
+                <a href="https://artistro.com/blogs/news/30-most-famous-artworks-in-history-the-greatest-art-of-all-time?srsltid=AfmBOooEuURmnWgmoGpkGZOpY1QuSjbXKOgKvBh-yHHgqltFms8vGkic"onclick="event.stopPropagation()" target="_blank">
+                  <button>Visit Site</button>
+                </a>
+            </div>
+              
+        </div>
+        <div class="card" onclick="openPainting(3)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg/640px-The_Last_Supper_-_Leonardo_Da_Vinci_-_High_Resolution_32x16.jpg" alt="image1" >
+            <div class="img-details">
+                <p>The Last Supper (1495—1498)</p>
+            </div>
+            
+            <div class="artist-details">
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTcKwGr7IZeCuaV-YdIrI-Zy5kfKLbtt9kdq5PDHhtOOz0Q-8szZwM1YW9yvMcgoZYKLKn_7XTOJ4zhcKtG5oQ3vVDcL_IeY0CupDPI45jO" alt="artist1">
+                <p>Leonardo da Vinci</p>
+            </div>
+            <div class="visit-site">
+                <a href="https://artistro.com/blogs/news/30-most-famous-artworks-in-history-the-greatest-art-of-all-time?srsltid=AfmBOooEuURmnWgmoGpkGZOpY1QuSjbXKOgKvBh-yHHgqltFms8vGkic"onclick="event.stopPropagation()" target="_blank">
+                  <button>Visit Site</button>
+                </a>
+            </div>
+              
+        </div>
+        <div class="card" onclick="openPainting(4)">
+            <img src="https://cdn.britannica.com/33/194733-050-4CF75F31/Girl-with-a-Pearl-Earring-canvas-Johannes-1665.jpg" alt="image1" >
+            <div class="img-details">
+                <p>Girl with a 
+                    Pearl Earring (1665)</p>
+            </div>
+            
+            <div class="artist-details">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Cropped_version_of_Jan_Vermeer_van_Delft_002.jpg">
+                <p>Johannes Vermeer</p>
+            </div>
+            <div class="visit-site">
+                <a href="https://artistro.com/blogs/news/30-most-famous-artworks-in-history-the-greatest-art-of-all-time?srsltid=AfmBOooEuURmnWgmoGpkGZOpY1QuSjbXKOgKvBh-yHHgqltFms8vGkic"onclick="event.stopPropagation()" target="_blank">
+                  <button>Visit Site</button>
+                </a>
+            </div>
+              
+        </div>
+        <div class="card" onclick="openPainting(5)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Night_Watch_-_HD.jpg/1024px-The_Night_Watch_-_HD.jpg" alt="image1" >
+            <div class="img-details">
+                <p>The Night 
+                    Watch (1642)</p>
+            </div>
+            
+            <div class="artist-details">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg/330px-Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg">
+                <p>Rembrandt van Rijn</p>
+            </div>
+            <div class="visit-site">
+                <a href="https://artistro.com/blogs/news/30-most-famous-artworks-in-history-the-greatest-art-of-all-time?srsltid=AfmBOooEuURmnWgmoGpkGZOpY1QuSjbXKOgKvBh-yHHgqltFms8vGkic"onclick="event.stopPropagation()" target="_blank">
+                  <button>Visit Site</button>
+                </a>
+            </div>
+              
+        </div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/RAFAEL_-_Madonna_Sixtina_%28Gem%C3%A4ldegalerie_Alter_Meister%2C_Dresden%2C_1513-14._%C3%93leo_sobre_lienzo%2C_265_x_196_cm%29.jpg/500px-RAFAEL_-_Madonna_Sixtina_%28Gem%C3%A4ldegalerie_Alter_Meister%2C_Dresden%2C_1513-14._%C3%93leo_sobre_lienzo%2C_265_x_196_cm%29.jpg" alt="image1" >
+            <div class="img-details">
+                <p>The Sistine Madonna</p>
+            </div>
+            
+            <div class="artist-details">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Raffaello_Sanzio.jpg/330px-Raffaello_Sanzio.jpg">
+                <p>Raffaello Santi (1512)</p>
+            </div>
+            <div class="visit-site">
+                <a href="https://artistro.com/blogs/news/30-most-famous-artworks-in-history-the-greatest-art-of-all-time?srsltid=AfmBOooEuURmnWgmoGpkGZOpY1QuSjbXKOgKvBh-yHHgqltFms8vGkic" target="_blank">
+                  <button>Visit Site</button>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/La_Libert%C3%A9_guidant_le_peuple_-_Eug%C3%A8ne_Delacroix_-_Mus%C3%A9e_du_Louvre_Peintures_RF_129_-_apr%C3%A8s_restauration_2024.jpg/500px-La_Libert%C3%A9_guidant_le_peuple_-_Eug%C3%A8ne_Delacroix_-_Mus%C3%A9e_du_Louvre_Peintures_RF_129_-_apr%C3%A8s_restauration_2024.jpg" alt="image1" >
+            <div class="img-details">
+                <p>Liberty Leading the People</p>
+            </div>
+            
+            <div class="artist-details">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/F%C3%A9lix_Nadar_1820-1910_portraits_Eug%C3%A8ne_Delacroix_restored.jpg/330px-F%C3%A9lix_Nadar_1820-1910_portraits_Eug%C3%A8ne_Delacroix_restored.jpg">
+                <p>Eugene Delacroix (1830)</p>
+            </div>
+            <div class="visit-site">
+                <a href="https://artistro.com/blogs/news/30-most-famous-artworks-in-history-the-greatest-art-of-all-time?srsltid=AfmBOooEuURmnWgmoGpkGZOpY1QuSjbXKOgKvBh-yHHgqltFms8vGkic" target="_blank">
+                  <button>Visit Site</button>
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/en/d/dd/The_Persistence_of_Memory.jpg" alt="image1" >
+            <div class="img-details">
+                <p>The Persistence of Memory</p>
+            </div>
+            
+            <div class="artist-details">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Salvador_Dal%C3%AD_1939.jpg/330px-Salvador_Dal%C3%AD_1939.jpg">
+                <p>Salvador Dalí (1931)</p>
+            </div>
+            <div class="visit-site">
+                <a href="https://artistro.com/blogs/news/30-most-famous-artworks-in-history-the-greatest-art-of-all-time?srsltid=AfmBOooEuURmnWgmoGpkGZOpY1QuSjbXKOgKvBh-yHHgqltFms8vGkic" target="_blank">
+                  <button>Visit Site</button>
+                </a>
+            </div>
+        </div>
+    </div>
+      
+
+
+
+    
+</body>
+</html>
