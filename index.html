@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="CSS/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="login-card">
-        <div class="login-header">
-            <p>Login</p>
-        </div>
-        <div class="input-box">
-            <div class="username">
-                <p>Username</p>
-                <input type="text" name="username" >
-            </div>
-            <div class="password">
-                <p>Password</p>
-                <input type="password" name="password">
-            </div> 
-        </div>
-        <div class="signin-button">
-            <button onclick="window.location.href='home.html'">Sign In</button>
-          </div>          
-        <div class="sign-up">
-            <p>Don't have an account?<a href="signup.html"> Sign up</a></p>
-        </div>
+  <div class="login-card">
+    <div class="login-header">
+      <p>Login</p>
     </div>
+    <form onsubmit="return validateLogin()">
+      <div class="input-box">
+        <div class="username">
+          <p>Username</p>
+          <input type="text" name="username" required />
+        </div>
+        <div class="password">
+          <p>Password</p>
+          <input type="password" name="password" id="loginPassword" required />
+        </div>
+    
+      <div class="signin-button">
+        <button type="submit">Sign In</button>
+      </div>
+    </div>
+    </form>
+    <div class="sign-up">
+      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </div>
+
+  <script src="JS/validation.js"></script>
 </body>
 </html>

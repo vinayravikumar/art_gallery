@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/signup.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="CSS/signup.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="signup-card">
-        <div class="login-header">
-            <p>Sign Up</p>
-        </div>
-        <div class="input-box">
-            <div class="username">
-                <p>Username</p>
-                <input type="text" name="username" >
-            </div>
-            <div class="email">
-                <p>Email</p>
-                <input type="text" name="username" >
-            </div>
-            <div class="password">
-                <p>Password</p>
-                <input type="password" name="password">
-            </div> 
-        </div>
-        <div class="signup-button">
-            <button>Sign Up</button>
-        </div>
-        <div class="login-link">
-            <p>Already have an account?<a href="index.html"> Login</a></p>
-        </div>
+  <div class="signup-card">
+    <div class="login-header">
+      <p>Sign Up</p>
     </div>
+    <form onsubmit="return validateSignup()">
+      <div class="input-box">
+        <div class="username">
+          <p>Username</p>
+          <input type="text" name="username" required />
+        </div>
+        <div class="email">
+          <p>Email</p>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <div class="phone">
+          <p>Phone</p>
+          <input type="text" name="phone" id="phone" required />
+        </div>
+        <div class="password">
+          <p>Password</p>
+          <input type="password" name="password" id="password" oninput="checkPasswordStrength()" required />
+          <small id="strength" style="font-size: 13px; display: block; margin-top: 5px;"></small>
+        </div>
     
+      <div class="signup-button">
+        <button type="submit">Sign Up</button>
+      </div>
+    </div>
+    </form>
+    <div class="login-link">
+      <p>Already have an account? <a href="index.html">Login</a></p>
+    </div>
+  </div>
+
+  <script src="JS/validation.js"></script>
 </body>
 </html>

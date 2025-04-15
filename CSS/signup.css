@@ -36,7 +36,7 @@ body{
     flex-direction: column;
     gap: 5px;
 }
-.username,.password{
+.username,.password,.phone{
     display: flex;
     gap: 6px;
 }
@@ -44,6 +44,7 @@ body{
     display: flex;
     gap: 37px;
 }
+.phone input,
 .username input ,
 .password input,
 .email input{
