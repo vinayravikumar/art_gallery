@@ -1,59 +1,200 @@
 // validation.js
 
-function validateSignup() {
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const password = document.getElementById('password').value;
-  
-    const phoneRegex = /^(\d{10}|(\d{3}[-.\s]){2}\d{4})$/;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-  
-    if (!phoneRegex.test(phone)) {
-      alert("Invalid phone number format.");
-      return false;
+function validateSignup(event) {
+    event.preventDefault();
+    
+    // Get form elements
+    const email = document.getElementById('email');
+    const phone = document.getElementById('phone');
+    const password = document.getElementById('password');
+    
+    // Get error elements
+    const emailError = document.getElementById('emailError');
+    const phoneError = document.getElementById('phoneError');
+    const passwordError = document.getElementById('passwordError');
+    
+    // Reset previous error messages
+    emailError.style.display = 'none';
+    phoneError.style.display = 'none';
+    passwordError.style.display = 'none';
+    
+    let isValid = true;
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.value.trim() === '') {
+        emailError.textContent = 'Email is required';
+        emailError.style.display = 'block';
+        isValid = false;
+    } else if (!emailRegex.test(email.value)) {
+        emailError.textContent = 'Please enter a valid email address';
+        emailError.style.display = 'block';
+        isValid = false;
     }
-  
-    if (!passwordRegex.test(password)) {
-      alert("Password must be at least 8 characters with uppercase, lowercase, and a number.");
-      return false;
+    
+    // Phone validation
+    const phoneRegex = /^(\+\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+    if (phone.value.trim() === '') {
+        phoneError.textContent = 'Phone number is required';
+        phoneError.style.display = 'block';
+        isValid = false;
+    } else if (!phoneRegex.test(phone.value)) {
+        phoneError.textContent = 'Please enter a valid phone number';
+        phoneError.style.display = 'block';
+        isValid = false;
     }
-  
-    alert("Signup Successful!");
-    return true;
-  }
-  
-  function checkPasswordStrength() {
-    const password = document.getElementById("password").value;
-    const strengthText = document.getElementById("strength");
-    let strength = "Poor";
-    let color = "red";
-  
-    const mediumRegex = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/;
-    const strongRegex = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{10,}/;
-  
-    if (strongRegex.test(password)) {
-      strength = "Strong";
-      color = "green";
-    } else if (mediumRegex.test(password)) {
-      strength = "Medium";
-      color = "orange";
+    
+    // Password validation
+    if (password.value === '') {
+        passwordError.textContent = 'Password is required';
+        passwordError.style.display = 'block';
+        isValid = false;
+    } else if (password.value.length < 8) {
+        passwordError.textContent = 'Password must be at least 8 characters';
+        passwordError.style.display = 'block';
+        isValid = false;
+    } else if (!/(?=.*[a-z])/.test(password.value)) {
+        passwordError.textContent = 'Password must contain at least one lowercase letter';
+        passwordError.style.display = 'block';
+        isValid = false;
+    } else if (!/(?=.*[A-Z])/.test(password.value)) {
+        passwordError.textContent = 'Password must contain at least one uppercase letter';
+        passwordError.style.display = 'block';
+        isValid = false;
+    } else if (!/(?=.*\d)/.test(password.value)) {
+        passwordError.textContent = 'Password must contain at least one number';
+        passwordError.style.display = 'block';
+        isValid = false;
     }
-  
-    strengthText.textContent = `Strength: ${strength}`;
-    strengthText.style.color = color;
-  }
-  
-  function validateLogin() {
-    const password = document.getElementById("loginPassword").value;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-  
-    if (!passwordRegex.test(password)) {
-      alert("Password must be at least 8 characters, include one uppercase letter, one lowercase letter, and one number.");
-      return false;
+    
+    if (isValid) {
+        // Here you would typically make an API call to your backend
+        console.log('Form is valid, submitting...');
+        alert('Account created successfully!');
+        window.location.href = 'index.html';
     }
-  
-    // Redirect or perform login logic
-    window.location.href = "home.html";
+    
     return false;
-  }
+}
+
+function validateLogin(event) {
+    event.preventDefault();
+    
+    // Get form elements
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    
+    // Reset previous error messages
+    emailError.style.display = 'none';
+    passwordError.style.display = 'none';
+    
+    let isValid = true;
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.value.trim() === '') {
+        emailError.textContent = 'Email is required';
+        emailError.style.display = 'block';
+        isValid = false;
+    } else if (!emailRegex.test(email.value)) {
+        emailError.textContent = 'Please enter a valid email address';
+        emailError.style.display = 'block';
+        isValid = false;
+    }
+    
+    // Password validation
+    if (password.value === '') {
+        passwordError.textContent = 'Password is required';
+        passwordError.style.display = 'block';
+        isValid = false;
+    } else if (password.value.length < 6) {
+        passwordError.textContent = 'Password must be at least 6 characters';
+        passwordError.style.display = 'block';
+        isValid = false;
+    }
+    
+    if (isValid) {
+        // Here you would typically make an API call to your backend
+        console.log('Form is valid, redirecting...');
+        window.location.href = 'home.html';
+    }
+    
+    return false;
+}
+
+// Add real-time validation for all fields
+document.getElementById('email').addEventListener('input', function() {
+    const emailError = document.getElementById('emailError');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (this.value.trim() === '') {
+        emailError.textContent = 'Email is required';
+        emailError.style.display = 'block';
+    } else if (!emailRegex.test(this.value)) {
+        emailError.textContent = 'Please enter a valid email address';
+        emailError.style.display = 'block';
+    } else {
+        emailError.style.display = 'none';
+    }
+});
+
+document.getElementById('phone').addEventListener('input', function() {
+    const phoneError = document.getElementById('phoneError');
+    const phoneRegex = /^(\+\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+    if (this.value.trim() === '') {
+        phoneError.textContent = 'Phone number is required';
+        phoneError.style.display = 'block';
+    } else if (!phoneRegex.test(this.value)) {
+        phoneError.textContent = 'Please enter a valid phone number';
+        phoneError.style.display = 'block';
+    } else {
+        phoneError.style.display = 'none';
+    }
+});
+
+document.getElementById('password').addEventListener('input', function() {
+    const passwordError = document.getElementById('passwordError');
+    const strengthText = document.getElementById('strength');
+    
+    if (this.value === '') {
+        passwordError.textContent = 'Password is required';
+        passwordError.style.display = 'block';
+        strengthText.textContent = '';
+    } else if (this.value.length < 8) {
+        passwordError.textContent = 'Password must be at least 8 characters';
+        passwordError.style.display = 'block';
+        strengthText.textContent = 'Strength: Weak';
+        strengthText.style.color = '#ff4444';
+    } else if (!/(?=.*[a-z])/.test(this.value)) {
+        passwordError.textContent = 'Password must contain at least one lowercase letter';
+        passwordError.style.display = 'block';
+        strengthText.textContent = 'Strength: Weak';
+        strengthText.style.color = '#ff4444';
+    } else if (!/(?=.*[A-Z])/.test(this.value)) {
+        passwordError.textContent = 'Password must contain at least one uppercase letter';
+        passwordError.style.display = 'block';
+        strengthText.textContent = 'Strength: Weak';
+        strengthText.style.color = '#ff4444';
+    } else if (!/(?=.*\d)/.test(this.value)) {
+        passwordError.textContent = 'Password must contain at least one number';
+        passwordError.style.display = 'block';
+        strengthText.textContent = 'Strength: Weak';
+        strengthText.style.color = '#ff4444';
+    } else {
+        passwordError.style.display = 'none';
+        
+        // Check password strength
+        if (this.value.length >= 12 && /(?=.*[!@#$%^&*])/.test(this.value)) {
+            strengthText.textContent = 'Strength: Strong';
+            strengthText.style.color = '#00C851';
+        } else if (this.value.length >= 10) {
+            strengthText.textContent = 'Strength: Medium';
+            strengthText.style.color = '#ffbb33';
+        } else {
+            strengthText.textContent = 'Strength: Good';
+            strengthText.style.color = '#33b5e5';
+        }
+    }
+});
   

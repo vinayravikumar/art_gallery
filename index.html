@@ -5,22 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
   <link rel="stylesheet" href="CSS/index.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="login-card">
     <div class="login-header">
-      <p>Login</p>
+      <p>Welcome Back</p>
     </div>
-    <form onsubmit="return validateLogin()">
+    <form id="loginForm" onsubmit="return validateLogin(event)">
       <div class="input-box">
-        <div class="username">
-          <p>Username</p>
-          <input type="text" name="username" required />
+        <div class="email">
+          <p>Email</p>
+          <input type="email" name="email" id="email" required />
+          <span class="error-message" id="emailError"></span>
         </div>
         <div class="password">
           <p>Password</p>
-          <input type="password" name="password" id="loginPassword" required />
+          <input type="password" name="password" id="password" required />
+          <span class="error-message" id="passwordError"></span>
         </div>
     
       <div class="signin-button">
