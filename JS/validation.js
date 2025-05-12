@@ -33,13 +33,13 @@ function validateSignup(event) {
     }
     
     // Phone validation
-    const phoneRegex = /^(\+\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+    const phoneRegex = /^(?:\d{10}|\d{3}[-. ]\d{3}[-. ]\d{4})$/;
     if (phone.value.trim() === '') {
         phoneError.textContent = 'Phone number is required';
         phoneError.style.display = 'block';
         isValid = false;
     } else if (!phoneRegex.test(phone.value)) {
-        phoneError.textContent = 'Please enter a valid phone number';
+        phoneError.textContent = 'Please enter a valid phone number (10 digits) in format: 1234567890, 123-456-7890, 123.456.7890, or 123 456 7890';
         phoneError.style.display = 'block';
         isValid = false;
     }
@@ -117,7 +117,10 @@ function validateLogin(event) {
     
     if (isValid) {
         // Here you would typically make an API call to your backend
-        console.log('Form is valid, redirecting...');
+        console.log('Login successful, redirecting...');
+        // Store login state if needed
+        localStorage.setItem('isLoggedIn', 'true');
+        // Redirect to home page
         window.location.href = 'home.html';
     }
     
@@ -141,12 +144,27 @@ document.getElementById('email').addEventListener('input', function() {
 
 document.getElementById('phone').addEventListener('input', function() {
     const phoneError = document.getElementById('phoneError');
-    const phoneRegex = /^(\+\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+    const phoneRegex = /^(?:\d{10}|\d{3}[-. ]\d{3}[-. ]\d{4})$/;
+    
+    // Remove any non-digit characters except allowed separators
+    let cleanedValue = this.value.replace(/[^\d\s\-\.]/g, '');
+    
+    // Format the number as user types
+    if (cleanedValue.length > 0) {
+        if (cleanedValue.length <= 3) {
+            this.value = cleanedValue;
+        } else if (cleanedValue.length <= 6) {
+            this.value = cleanedValue.slice(0, 3) + '-' + cleanedValue.slice(3);
+        } else {
+            this.value = cleanedValue.slice(0, 3) + '-' + cleanedValue.slice(3, 6) + '-' + cleanedValue.slice(6, 10);
+        }
+    }
+
     if (this.value.trim() === '') {
         phoneError.textContent = 'Phone number is required';
         phoneError.style.display = 'block';
     } else if (!phoneRegex.test(this.value)) {
-        phoneError.textContent = 'Please enter a valid phone number';
+        phoneError.textContent = 'Please enter a valid phone number (10 digits) in format: 1234567890, 123-456-7890, 123.456.7890, or 123 456 7890';
         phoneError.style.display = 'block';
     } else {
         phoneError.style.display = 'none';
@@ -164,36 +182,49 @@ document.getElementById('password').addEventListener('input', function() {
     } else if (this.value.length < 8) {
         passwordError.textContent = 'Password must be at least 8 characters';
         passwordError.style.display = 'block';
-        strengthText.textContent = 'Strength: Weak';
-        strengthText.style.color = '#ff4444';
+        strengthText.textContent = 'Strength: Poor';
+        strengthText.style.color = '#ff4444'; // Red
     } else if (!/(?=.*[a-z])/.test(this.value)) {
         passwordError.textContent = 'Password must contain at least one lowercase letter';
         passwordError.style.display = 'block';
-        strengthText.textContent = 'Strength: Weak';
-        strengthText.style.color = '#ff4444';
+        strengthText.textContent = 'Strength: Poor';
+        strengthText.style.color = '#ff4444'; // Red
     } else if (!/(?=.*[A-Z])/.test(this.value)) {
         passwordError.textContent = 'Password must contain at least one uppercase letter';
         passwordError.style.display = 'block';
-        strengthText.textContent = 'Strength: Weak';
-        strengthText.style.color = '#ff4444';
+        strengthText.textContent = 'Strength: Poor';
+        strengthText.style.color = '#ff4444'; // Red
     } else if (!/(?=.*\d)/.test(this.value)) {
         passwordError.textContent = 'Password must contain at least one number';
         passwordError.style.display = 'block';
-        strengthText.textContent = 'Strength: Weak';
-        strengthText.style.color = '#ff4444';
+        strengthText.textContent = 'Strength: Poor';
+        strengthText.style.color = '#ff4444'; // Red
     } else {
         passwordError.style.display = 'none';
         
         // Check password strength
-        if (this.value.length >= 12 && /(?=.*[!@#$%^&*])/.test(this.value)) {
+        let strength = 0;
+        
+        // Length check
+        if (this.value.length >= 8) strength++;
+        if (this.value.length >= 12) strength++;
+        
+        // Character type checks
+        if (/(?=.*[a-z])/.test(this.value)) strength++;
+        if (/(?=.*[A-Z])/.test(this.value)) strength++;
+        if (/(?=.*\d)/.test(this.value)) strength++;
+        if (/(?=.*[!@#$%^&*])/.test(this.value)) strength++;
+        
+        // Determine strength level
+        if (strength >= 5) {
             strengthText.textContent = 'Strength: Strong';
-            strengthText.style.color = '#00C851';
-        } else if (this.value.length >= 10) {
+            strengthText.style.color = '#00C851'; // Green
+        } else if (strength >= 3) {
             strengthText.textContent = 'Strength: Medium';
-            strengthText.style.color = '#ffbb33';
+            strengthText.style.color = '#ffbb33'; // Orange
         } else {
-            strengthText.textContent = 'Strength: Good';
-            strengthText.style.color = '#33b5e5';
+            strengthText.textContent = 'Strength: Poor';
+            strengthText.style.color = '#ff4444'; // Red
         }
     }
 });
